@@ -1,11 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <title>Github<title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Webpage</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+      color: #ddd;
+    }
+
+    button {
+      background: #ffd700;
+      border: none;
+      color: #333;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.25s ease;
+    }
+
+    button:hover {
+      background: #ffc107;
+    }
+
+    /* Hidden text that toggles */
+    #extraContent {
+      margin-top: 20px;
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+      display: none;
+      color: #eee;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Image styling */
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+  </style>
 </head>
 <body>
-    <h1>'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aspernatur similique iure!</h1>
+  <div class="container">
+    <h1>Explore the Beauty of Nature</h1>
+    <img
+      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+      alt="Beautiful mountain landscape"
+      id="natureImage"
+      title="Click me!"
+    />
+    <p>Click the button below to learn more about this stunning place.</p>
+    <button id="toggleBtn">Show More Info</button>
+    <div id="extraContent">
+      This breathtaking mountain range is part of the Rocky Mountains, famous for its rugged peaks and diverse wildlife. It’s a perfect destination for hiking, photography, and connecting with nature.
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('toggleBtn');
+    const extra = document.getElementById('extraContent');
+    const img = document.getElementById('natureImage');
+
+    btn.addEventListener('click', () => {
+      if (extra.style.display === 'block') {
+        extra.style.display = 'none';
+        btn.textContent = 'Show More Info';
+      } else {
+        extra.style.display = 'block';
+        btn.textContent = 'Show Less Info';
+      }
+    });
+
+    // Bonus: Clicking image toggles extra info as well
+    img.addEventListener('click', () => {
+      btn.click(); // trigger the button click programmatically
+    });
+  </script>
 </body>
 </html>
